@@ -6,5 +6,5 @@
 - git push 
 
 
-# /!\ Toujours faire un git pull avant de faire un git push
+## /!\ Toujours faire un git pull avant de faire un git push
 

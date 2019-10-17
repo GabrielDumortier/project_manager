@@ -12,3 +12,4 @@
 
 ## Après un pull, faire un yarn pour installer les node_modules
 
+##Commentez votre code ! Et aussi les todos

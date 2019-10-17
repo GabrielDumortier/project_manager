@@ -8,3 +8,5 @@
 
 ## /!\ Toujours faire un git pull avant de faire un git push
 
+## Après un pull, faire un yarn pour installer les node_modules
+

@@ -8,7 +8,8 @@ import {json, urlencoded} from 'body-parser';
 // app.use(json());
 // app.use(urlencoded({extended:true}));
 
-// app.use('/api', dbRouter); // dbRouter a importer
+// app.use('/api/projects', projectRouter); //  a importer et renommer
+// app.use('/api/users', usersRouter); //  a importer
 // const start = async () => {
 //     try {
 //         await connect();

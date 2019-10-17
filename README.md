@@ -1,8 +1,10 @@
 # Comment push
+- git pull
 - git status (les modifs sont en rouge)
 - git add * / git add nomDuFichier (on prépare les fichiers)
 - git status(les modifs sont passés au vert)
 - git commit -m "message court et concis"
+- git pull
 - git push 
 
 

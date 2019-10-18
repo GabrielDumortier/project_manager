@@ -13,6 +13,11 @@ import { PageLandingComponent } from './pages/page-landing/page-landing.componen
 import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { PageProjectComponent } from './pages/page-project/page-project.component';
 import { PageLogsComponent } from './pages/page-logs/page-logs.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PageUserComponent } from './pages/page-user/page-user.component';
+import { PageProjectsComponent } from './pages/page-projects/page-projects.component';
+import { PageTasksListComponent } from './pages/page-tasks-list/page-tasks-list.component';
+import { PageProjectManagementComponent } from './pages/page-project-management/page-project-management.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,12 @@ import { PageLogsComponent } from './pages/page-logs/page-logs.component';
     PageLandingComponent,
     PageHomeComponent,
     PageProjectComponent,
-    PageLogsComponent
+    PageLogsComponent,
+    PageNotFoundComponent,
+    PageUserComponent,
+    PageProjectsComponent,
+    PageTasksListComponent,
+    PageProjectManagementComponent
   ],
   imports: [
     BrowserModule,

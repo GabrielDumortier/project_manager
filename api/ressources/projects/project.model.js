@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+const colorValidator = (v) => (/^#([0-9a-f]{3}){1,2}$/i).test(v)
+
 const projectsSchema = new mongoose.Schema({
     name: {
         type : String,
@@ -16,41 +18,214 @@ const projectsSchema = new mongoose.Schema({
     },
     creation_date : {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        immutable: true
     },
     start_date : {
         type: Date
     },
     finish_date : {
         type : Date
-    }
+    },
+    deadline : {
+        type : Date
+    },
+    status : {
+        type : String,
+        default : "created",
+        enum : ["created","started","finished","abandonned"]
+
+    },
+    users : [
+        {
+            user : {
+                type : String,
+                maxlength : 50
+            },
+            function : {
+                type : String,
+                maxlength : 50
+            },
+            role : {
+                type : String,
+                default : "administrator",
+                enum : ["administrator", "moderator","editor","spectator"]
+            }
+        }
+    ],
+    private : {
+        type : Boolean,
+        default : true
+    },
+    attachments : [
+        {
+            path : {
+                type : String
+            },
+            name : {
+                type : String,
+                maxlength : 50
+            },
+            description : {
+                type : String,
+                maxlength : 250
+            }
+        }
+    ],
+    comments : [
+        {
+            authorId : {
+                type : String
+            },
+            comment : {
+                type : String,
+                maxlength : 400
+            },
+            date : {
+                type : Date,
+                default: Date.now,
+                immutable: true
+            }
+        }
+    ],
+    git : {
+        type : String
+    },
+    ressources : [
+        {
+            name : {
+                type : String,
+                maxlength : 50
+            },
+            description : {
+                type : String,
+                maxlength : 250
+            },
+            url : {
+                type : String
+            },
+            author : {
+                type : String
+            },
+            date : {
+                type : Date,
+                default: Date.now,
+                immutable: true
+            }
+        }
+    ],
+    tasks : [
+        {
+            name : {
+                type : String,
+                maxlength : 50
+            },
+            description : {
+                type : String,
+                maxlength : 250
+            },
+            authorId : {
+                type : String
+            },
+            labels : [
+                {
+                    name : {
+                        type : String,
+                        maxlength : 20
+                    },
+                    color : {
+                        type : String,
+                        validator: [colorValidator, 'ERROR - project.model : projects.tasks.label.color is invalid (#hexadecimal required)']
+                    }
+                }
+            ],
+            assigned : [
+                {
+                    userId : {
+                        type : String
+                    },
+                    spend : {
+                        type : Number,
+                        default : 0
+                    }
+                }
+            ],
+            checklist : [
+                {
+                    name : {
+                        type : String,
+                        maxlength : 20
+                    },
+                    done : {
+                        type : Boolean,
+                        default : false
+                    }
+                }
+            ],
+            deadline : {
+                type : Date
+            },
+            progression : {
+                type : Number,
+                default : 0
+            },
+            estimated : {
+                type : Number,
+                default : 1
+            },
+            priority : {
+                type : String,
+                enum : ["high","middle","low","none"],
+                default : "none"
+            },
+            attachments : [
+                {
+                    name : {
+                        type : String,
+                        maxlength : 20
+                    },
+                    description : {
+                        type : String,
+                        maxlength : 200
+                    },
+                    path : {
+                        type : String
+                    },
+                    authorId : {
+                        type : String
+                    },
+                    date : {
+                        type : Date,
+                        default: Date.now,
+                        immutable: true
+                    }
+                }
+            ],
+            comments : [
+                {
+                    author : {
+                        type : String
+                    },
+                    comment : {
+                        type : String,
+                        maxlength : 250
+                    },
+                    date : {
+                        type : Date,
+                        default: Date.now,
+                        immutable: true
+                    }
+                }
+            ],
+            status : {
+                type : String,
+                maxlength : 12,
+                default: "todo"
+            },
+
+        }
+    ]
 })
 
-const moviesSchema = new mongoose.Schema({
-	fields : {
-		directors : [
-			{type: String}
-		],
-		release_date : {type: String},
-		rating : {type:Number},
-		genres : [
-			{type: String}
-		],
-		image_url : {type: String},
-		plot : {type: String},
-		title : {type: String},
-		rank : {type:Number},
-		running_time_secs : {type:Number},
-		actors : [
-			{type: String}
-		],
-		year : {type:Number}
-	},
-	id : {type: String},
-    type : {
-        type: String,
-        default: "add"
-        }
-});
 
 export const Project = mongoose.model('project',projectsSchema)

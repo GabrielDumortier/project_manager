@@ -12,7 +12,7 @@ const projectsSchema = new mongoose.Schema({
         type : String,
         maxlength: 500
     },
-    author: {
+    author_id: {
         type: String,
         required: true
     },
@@ -33,12 +33,12 @@ const projectsSchema = new mongoose.Schema({
     status : {
         type : String,
         default : "created",
-        enum : ["created","started","finished","abandonned"]
+        enum : ["created","started","finished","abandoned"]
 
     },
     users : [
         {
-            user : {
+            user_id : {
                 type : String,
                 maxlength : 50
             },
@@ -74,7 +74,7 @@ const projectsSchema = new mongoose.Schema({
     ],
     comments : [
         {
-            authorId : {
+            author_id : {
                 type : String
             },
             comment : {
@@ -124,7 +124,7 @@ const projectsSchema = new mongoose.Schema({
                 type : String,
                 maxlength : 250
             },
-            authorId : {
+            author_id : {
                 type : String
             },
             labels : [
@@ -141,7 +141,7 @@ const projectsSchema = new mongoose.Schema({
             ],
             assigned : [
                 {
-                    userId : {
+                    user_id : {
                         type : String
                     },
                     spend : {
@@ -191,7 +191,7 @@ const projectsSchema = new mongoose.Schema({
                     path : {
                         type : String
                     },
-                    authorId : {
+                    author_id : {
                         type : String
                     },
                     date : {
@@ -203,7 +203,7 @@ const projectsSchema = new mongoose.Schema({
             ],
             comments : [
                 {
-                    author : {
+                    author_id : {
                         type : String
                     },
                     comment : {

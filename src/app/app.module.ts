@@ -18,7 +18,7 @@ import { PageUserComponent } from './pages/page-user/page-user.component';
 import { PageProjectsComponent } from './pages/page-projects/page-projects.component';
 import { PageTasksListComponent } from './pages/page-tasks-list/page-tasks-list.component';
 import { PageProjectManagementComponent } from './pages/page-project-management/page-project-management.component';
-import { FormSignUpComponent } from './forms/form-sign-up/form-sign-up.component';
+import { FormSignUpComponent } from './pages/forms/form-sign-up/form-sign-up.component';
 
 @NgModule({
   declarations: [

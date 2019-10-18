@@ -16,6 +16,7 @@ export class FormSignUpComponent implements OnInit {
     this.user = this.form.value;
 
   }
+  
 
   ngOnInit() {
     this.form = new FormGroup({

@@ -53,7 +53,7 @@ const projectsSchema = new mongoose.Schema({
             }
         }
     ],
-    private : {
+    is_private : {
         type : Boolean,
         default : true
     },

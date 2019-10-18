@@ -16,7 +16,6 @@ import {User} from './user.model';
 //             "invitedBy": "Alain Souchon"
 //     }],
 //     "tasks":["superid637893347"]
-
 // }
 
 export const createUser = async (req, res) => {

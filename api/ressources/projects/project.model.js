@@ -34,7 +34,6 @@ const projectsSchema = new mongoose.Schema({
         type : String,
         default : "created",
         enum : ["created","started","finished","abandoned"]
-
     },
     users : [
         {
@@ -42,7 +41,7 @@ const projectsSchema = new mongoose.Schema({
                 type : String,
                 maxlength : 50
             },
-            function : {
+            job : {
                 type : String,
                 maxlength : 50
             },
@@ -135,7 +134,7 @@ const projectsSchema = new mongoose.Schema({
                     },
                     color : {
                         type : String,
-                        validator: [colorValidator, 'ERROR - project.model : projects.tasks.label.color is invalid (#hexadecimal required)']
+                        validator: [colorValidator, "ERROR - project.model : projects.tasks.label.color is invalid (#hexadecimal required)"]
                     }
                 }
             ],

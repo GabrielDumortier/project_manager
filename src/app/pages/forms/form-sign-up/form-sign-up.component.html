@@ -1,1 +1,16 @@
-<p>form-sign-up works!</p>
+<form [formGroup]="form" (submit)="createUser()">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control"  placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email and password with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

@@ -7,27 +7,27 @@ const userSchema = new mongoose.Schema({
     firstname: {
         type: String, 
         maxLength: 50, 
-        required: true
+        // required: true
     },
     lastname: {
         type: String, 
         maxLength: 50, 
-        required: true
+        // required: true
     },
     username: {
         type: String, 
         maxLength: 50, 
-        required: true
+        // required: true
     },
     email: {
         type: String, 
         maxLength: 50, 
         required: true,
-        validator: [emailValidator, "An error has occured with your email, please check"]
+        validator: [emailValidator, "VALIDATOR - ERROR - user.model : users.email is invalid"]
     },
     password: {
         type: String, 
-        maxLength: 50, 
+        // maxLength: 50, 
         required: true
     },
     avatar_url: {
@@ -52,7 +52,7 @@ const userSchema = new mongoose.Schema({
     projects: [{
         project_id: {type: String},
         favorite: {type: Boolean},
-        accepted: {type: Boolean},
+        accepted: {type: Boolean, default : false},
         invitedBy: {type: String},
     }], // pas sur de la syntaxe
     tasks: [

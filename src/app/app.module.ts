@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient } from 'selenium-webdriver/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { PageTasksListComponent } from './pages/page-tasks-list/page-tasks-list.
 import { PageProjectManagementComponent } from './pages/page-project-management/page-project-management.component';
 import { FormSignUpComponent } from './pages/forms/form-sign-up/form-sign-up.component';
 import { RestService } from './services/rest.service';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { RestService } from './services/rest.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClient
   ],
   providers: [RestService],
   bootstrap: [AppComponent]

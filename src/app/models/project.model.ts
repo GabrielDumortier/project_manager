@@ -1,5 +1,3 @@
-const colorValidator = (v) => (/^#([0-9a-f]{3}){1,2}$/i).test(v);
-
 export class Project {
     constructor (
         public name? : string,
@@ -12,7 +10,7 @@ export class Project {
         public status? : string,
         public users? : {
             user_id? : string,
-            function? : string,
+            job? : string,
             role? : string
         },
         public is_private? : boolean,

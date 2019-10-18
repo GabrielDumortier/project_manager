@@ -153,7 +153,7 @@ const projectsSchema = new mongoose.Schema({
                 {
                     name : {
                         type : String,
-                        maxlength : 20
+                        maxlength : 50
                     },
                     done : {
                         type : Boolean,

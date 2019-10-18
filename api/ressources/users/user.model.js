@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 
+const emailValidator = (v) => (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(v);
+
 const userSchema = new mongoose.Schema({
     
     firstname: {
@@ -20,7 +22,8 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String, 
         maxLength: 50, 
-        required: true
+        required: true,
+        validator: [emailValidator, "An error has occured with your email, please check"]
     },
     password: {
         type: String, 
@@ -43,10 +46,11 @@ const userSchema = new mongoose.Schema({
         {type: String}
     ],
     phone: {
-        type: Number
+        type: Number,
+        maxLength: 20
     },
     projects: [{
-        id: {type: String},
+        project_id: {type: String},
         favorite: {type: Boolean},
         accepted: {type: Boolean},
         invitedBy: {type: String},

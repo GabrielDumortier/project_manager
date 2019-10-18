@@ -21,6 +21,7 @@ import { PageProjectsComponent } from './pages/page-projects/page-projects.compo
 import { PageTasksListComponent } from './pages/page-tasks-list/page-tasks-list.component';
 import { PageProjectManagementComponent } from './pages/page-project-management/page-project-management.component';
 import { FormSignUpComponent } from './pages/forms/form-sign-up/form-sign-up.component';
+import { RestService } from './services/rest.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { FormSignUpComponent } from './pages/forms/form-sign-up/form-sign-up.com
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [RestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

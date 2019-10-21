@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt-nodejs';
 
 const emailValidator = (v) => (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(v);
 
-const userSchema = new mongoose.Schema({
+const usersSchema = new mongoose.Schema({
     
     firstname: {
         type: String, 
@@ -60,4 +61,14 @@ const userSchema = new mongoose.Schema({
     ]
 });
 
-export const User = mongoose.model('users', userSchema);
+// METHOD TO ENCRYPT PASSWORD
+usersSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+// METHOD TO VERIFY A PASSWORD
+usersSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+
+export const User = mongoose.model('users', usersSchema);

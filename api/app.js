@@ -5,6 +5,8 @@ import usersRouter from './ressources/users/user.router';
 import userSecureRouter from './ressources/users/userSecure.router';
 import projectsRouter from './ressources/projects/project.router';
 
+// Here to change the listenning port
+const port = 8001
 
 const app = express();
 
@@ -19,8 +21,8 @@ app.use('/api/projects', projectsRouter);
 const start = async () => {
     try {
         await connect();
-        app.listen(8001, () => {
-            console.log('Rest api is listening on port 8001');
+        app.listen(port, () => {
+            console.log('Rest api is listening on port '+ port);
         });
     } catch(err) {
         throw err;

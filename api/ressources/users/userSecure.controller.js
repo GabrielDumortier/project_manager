@@ -1,4 +1,6 @@
 import {User} from './user.model';
+import {createUser, authUser} from '../../utils/createAuthUser';
+import { sign } from '../../utils/tokens';
 
 // We can GET and PUT password from here
 
@@ -12,6 +14,19 @@ export const listOne = async (req,res)=>{
         console.error(e)
         res.status(400).end()
     }
+};
+// POST /api/user/login/
+export const login = async (req,res)=>{
+    if(authUser(req,res)) {
+        sign(res,res);
+    } else {
+        res.status(400).end();
+    }
+};
+
+// POST /api/user/
+export const create = async (req, res) => {
+    createUser(req,res)
 };
 
 // PUT  /api/user/:id

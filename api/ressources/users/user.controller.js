@@ -3,16 +3,16 @@ import {User} from './user.model';
 // ## TODO : modifier afin de ne pas renvoyer les PW
 
 // GET /api/users/
-export const create = async (req, res) => {
+export const list = async (req,res)=>{
     try{
-        console.log(req.body)
-        const user = await User.create({...req.body}); //req.body =  ce qu'on entre dans insomnia
-        res.status(201).json({users:user});
-    }catch(err) {
-        console.log(err);
-        res.status(400).end();
+        const users = await User.find().limit(50);
+        if(!users) return res.status(400).end();
+        res.status(200).json({users:users});
+    } catch(e){
+        console.error(e)
+        res.status(400).end()
     }
-}
+};
 
 // GET /api/users/:id
 export const listOne = async (req,res)=>{
@@ -26,15 +26,5 @@ export const listOne = async (req,res)=>{
     }
 };
 
-// POST /api/users/
-export const create = async (req, res) => {
-    try{
-        console.log(req.body)
-        const user = await User.create({...req.body});
-        res.status(201).json({users:user});
-    }catch(e) {
-        console.log(e);
-        res.status(400).end();
-    }
-}
+
 
